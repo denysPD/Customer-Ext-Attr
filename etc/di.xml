@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Kg\CustExtAttr\Api\Data\CustomerDescriptionInterface"
+                type="Kg\CustExtAttr\Model\CustomerDescription"/>
+
+    <preference for="Kg\CustExtAttr\Api\CustomerDescriptionRepositoryInterface"
+                type="Kg\CustExtAttr\Model\CustomerDescriptionRepository"/>
+
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="kg_custextattr_customer_description_extension_attribute_save_load"
+                type="Kg\CustExtAttr\Plugin\Magento\Customer\Api\CustomerRepositoryInterfacePlugin"/>
+    </type>
+
+</config>

@@ -1,0 +1,10 @@
+<?php
+/** @var \Magento\Customer\Block\Account\Dashboard\Info $block */
+$customer = $block->getCustomer();
+$customerDescriptionExtensionAttribute = $customer->getExtensionAttributes()->getCustomerDescription();
+if ($customerDescriptionExtensionAttribute && $customerDescriptionExtensionAttribute->getCanShow()):
+?>
+<div class="customer-description">
+    <?=  $block->escapeHtml(__("Customer Description") . ": " . $customerDescriptionExtensionAttribute->getDescription()); ?>
+</div>
+<?php endif; ?>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="kg_customer_description" resource="default" engine="innodb"
+           comment="Customer Description Extension Attribute">
+        <column xsi:type="int" name="id"
+                unsigned="true"
+                nullable="false"
+                identity="true"
+                comment="Extension Attribute Id"/>
+
+        <column xsi:type="boolean"
+                name="can_show"
+                nullable="false"
+                default="0"
+                comment="Can Show" />
+
+        <column xsi:type="varchar" name="customer_email"
+                nullable="false"
+                length="255"
+                comment="Customer Email"/>
+
+        <column xsi:type="text" name="description"
+                nullable="true"
+                comment="Description"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="KG_CUSTOMER_DESCRIPTION_CUSTOMER_EMAIL_CUSTOMER_ENTITY_EMAIL"
+                    table="kg_customer_description"
+                    column="customer_email"
+                    referenceTable="customer_entity"
+                    referenceColumn="email"
+                    onDelete="CASCADE"/>
+    </table>
+
+
+
+</schema>
